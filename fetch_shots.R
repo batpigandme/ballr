@@ -5,6 +5,7 @@ fetch_shots_by_player_id_and_season = function(player_id, season) {
     "http://stats.nba.com/stats/shotchartdetail",
     query = list(
       PlayerID = player_id,
+      PlayerPosition = "",
       Season = season,
       ContextMeasure = "FGA",
       DateFrom = "",
@@ -25,7 +26,8 @@ fetch_shots_by_player_id_and_season = function(player_id, season) {
       TeamID = 0,
       VsConference = "",
       VsDivision = ""
-    )
+    ),
+    add_headers(request_headers)
   )
 
   stop_for_status(request)
@@ -59,7 +61,8 @@ fetch_shots_by_player_id_and_season = function(player_id, season) {
     shot_made_numeric = as.numeric(as.character(shot_made_flag)),
     shot_made_flag = factor(shot_made_flag, levels = c("1", "0"), labels = c("made", "missed")),
     shot_attempted_flag = as.numeric(as.character(shot_attempted_flag)),
-    shot_value = ifelse(tolower(shot_type) == "3pt field goal", 3, 2)
+    shot_value = ifelse(tolower(shot_type) == "3pt field goal", 3, 2),
+    game_date = as.Date(game_date, format = "%Y%m%d")
   )
 
   raw_league_avg_data = data$resultSets[[2]]$rowSet
