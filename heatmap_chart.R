@@ -2,7 +2,7 @@ generate_heatmap_chart = function(shots, use_short_three = FALSE) {
   if (use_short_three) {
     base_court = short_three_court
   } else {
-    base_court = court    
+    base_court = court
   }
 
   base_court +
@@ -22,5 +22,6 @@ generate_heatmap_chart = function(shots, use_short_three = FALSE) {
                            labels = c("lower", "higher"),
                            colours = inferno_colors,
                            guide = guide_colorbar(barwidth = 15)) +
-    theme(legend.text = element_text(size = rel(0.6)))
+    theme(legend.text = element_text(size = rel(0.6))) +
+    theme(legend.title = element_text(colour = "black"))
 }

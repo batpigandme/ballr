@@ -110,7 +110,7 @@ generate_hex_chart = function(hex_data, use_short_three = FALSE, metric = "bound
   if (use_short_three) {
     base_court = short_three_court
   } else {
-    base_court = court    
+    base_court = court
   }
 
   if (length(hex_data) == 0) {
@@ -144,5 +144,6 @@ generate_hex_chart = function(hex_data, use_short_three = FALSE, metric = "bound
                               labels = label_formatter,
                               guide = guide_colorbar(barwidth = 15)) +
          scale_alpha_continuous(guide = FALSE, range = alpha_range, trans = "sqrt") +
-         theme(legend.text = element_text(size = rel(0.6)))
+         theme(legend.text = element_text(size = rel(0.6), colour = "black")) +
+    theme(legend.title = element_text(colour = "black"))
 }

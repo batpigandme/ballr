@@ -8,10 +8,15 @@
   margin-bottom: 20px;
 }
 .shot-chart-container {
-  background-color: #000004;
-  color: #fff;
+  background-color: #FFFFFF;
+  color: #000;
   position: relative;
 }
+
+.fill_label {
+  color: #000;
+}
+
 .shot-filters {
   max-width: 60%;
   font-size: 10px;
